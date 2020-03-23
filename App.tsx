@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
-import Dice from './Dice';
+import DiceRoll from './components/DiceRoll';
 
 export default function App() {
-  let currentNumber: number = 6;
+  const onRollFinished = (result: number) => {
+    console.log('number is: ' + result);
+  }
   return (
     <View style={styles.container}>
-      <Dice currentNumber={currentNumber}></Dice>
+      <DiceRoll onRollFinished={onRollFinished}></DiceRoll>
     </View>
   );
 }

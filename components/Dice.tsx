@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 
 const diceWidth: number = 200;
 const diceHeight: number = 200;
