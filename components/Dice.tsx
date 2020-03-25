@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   dice: {
-    borderColor: 'black',
+    borderColor: 'white',
     borderWidth: 2,
     borderStyle: 'solid',
 
