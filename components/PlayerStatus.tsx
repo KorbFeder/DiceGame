@@ -84,6 +84,7 @@ export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumb
 
 const styles = StyleSheet.create({
   container: {
+    height: iconSize * 3.3,
     paddingTop: 5,
     paddingBottom: 5,
     paddingLeft: 3,

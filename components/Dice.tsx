@@ -118,6 +118,7 @@ function createStyles(diceWidth = 200) {
       backgroundColor: 'white',
       width: diceWidth,
       height: diceHeight,
+      borderRadius: diceWidth * 0.14,
     },
     dot: {
       width: dotSize,
