@@ -7,12 +7,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const iconSize = 28;
 
 export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumber, isActive, hisTurn}) {
-  let boxColor = 'rgb(230, 245, 245)';
+  let boxColor = 'rgb(240, 240, 245)';
   if(isActive === true) {
     boxColor = 'white';
   }
   if(hisTurn === true) {
-    boxColor = 'rgb(230, 220, 255)';
+    boxColor = 'rgb(255, 230, 230)';
   }
   return (
     <View>
