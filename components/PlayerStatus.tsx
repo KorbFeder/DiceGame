@@ -6,10 +6,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const iconSize = 28;
 
-export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumber}) {
+export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumber, isActive, hisTurn}) {
+  let boxColor = 'rgb(230, 245, 245)';
+  if(isActive === true) {
+    boxColor = 'white';
+  }
+  if(hisTurn === true) {
+    boxColor = 'rgb(230, 220, 255)';
+  }
   return (
     <View>
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: boxColor}]}>
           <View style={styles.descriptionContainer}>
             <View style={[styles.outerIconCircle, {backgroundColor: 'rgb(246, 252, 252)'}]}>
               <View style={[styles.iconCircle, {backgroundColor: 'rgb(229, 247, 246)'}]}>
@@ -89,7 +96,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor: 'white',
     borderRadius: 5,
     elevation: 5
   },

@@ -13,14 +13,13 @@ export default function GameScreen() {
       <View style={styles.container}>
         <GameStatus></GameStatus>
         <ScrollView>
-          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
-          <PlayerStatus playerName={"Sepp"} beerNr={5} cupFilled={10} currentNumber={3}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={true}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={false}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={false}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={true} isActive={false}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={false}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={true}></PlayerStatus>
+          <PlayerStatus playerName={"Korbi"} beerNr={1} cupFilled={80} currentNumber={1} hisTurn={false} isActive={false}></PlayerStatus>
         </ScrollView>
         <View style={styles.diceContainer}>
           <View style={styles.dice}>
