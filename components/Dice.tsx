@@ -1,12 +1,8 @@
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
 
-const diceWidth: number = 200;
-const diceHeight: number = 200;
-const dotMargins: number = 25;
-const dotSize: number = 20;
-
-export default function Dice({currentNumber}) {
+export default function Dice({currentNumber, diceSize = 200}) {
+  const styles = createStyles(diceSize);
   return (
     <View style={styles.diceContainer}>      
         <View style={styles.dice}>
@@ -105,64 +101,66 @@ export default function Dice({currentNumber}) {
   );
 }
 
-const styles = StyleSheet.create({
-  diceContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '50%',
-    width: '100%',
-  },
-  dice: {
-    borderColor: 'white',
-    borderWidth: 2,
-    borderStyle: 'solid',
+function createStyles(diceWidth = 200) {
+  const diceHeight: number = diceWidth;
+  const dotMargins: number = diceWidth * 0.125;
+  const dotSize: number = diceWidth * 0.17;
 
-    backgroundColor: '#404040',
-    width: diceWidth,
-    height: diceHeight,
-  },
-  dot: {
-    width: dotSize,
-    height: dotSize,
-    backgroundColor: 'white',
-    borderRadius: 50,
-  },
+  return StyleSheet.create({
+    diceContainer: {
+      display: 'flex',
+    },
+    dice: {
+      borderColor: 'rgb(152, 153, 161)',
+      borderWidth: diceWidth * 0.01,
+      borderStyle: 'solid',
 
-  dotMiddle: {
-    position: 'absolute',
-    top: ((diceHeight / 2) - (dotSize / 2)),
-    left: ((diceWidth / 2) - (dotSize / 2)),
-  },
-  dotTopLeft: {
-    position: 'absolute',
-    top: dotMargins,
-    left: dotMargins,
-  },
-  dotBottomRight: {
-    position: 'absolute',
-    bottom: dotMargins,
-    right: dotMargins
-  },
-  dotBottomLeft: {
-    position: 'absolute',
-    bottom: dotMargins,
-    left: dotMargins
-  },
-  dotTopRight: {
-    position: 'absolute',
-    top: dotMargins,
-    right: dotMargins
-  },
-  dotCenterMiddleLeft: {
-    position: 'absolute',
-    top: ((diceHeight / 2) - (dotSize / 2)),
-    left: dotMargins
-  },
-  dotCenterMiddleRight: {
-    position: 'absolute',
-    top: ((diceHeight / 2) - (dotSize / 2)),
-    right: dotMargins
-  }
+      backgroundColor: 'white',
+      width: diceWidth,
+      height: diceHeight,
+    },
+    dot: {
+      width: dotSize,
+      height: dotSize,
+      backgroundColor: 'rgb(152, 153, 161)',
+      borderRadius: 50,
+    },
 
-});
+    dotMiddle: {
+      position: 'absolute',
+      top: ((diceHeight / 2) - (dotSize / 2)),
+      left: ((diceWidth / 2) - (dotSize / 2)),
+    },
+    dotTopLeft: {
+      position: 'absolute',
+      top: dotMargins,
+      left: dotMargins,
+    },
+    dotBottomRight: {
+      position: 'absolute',
+      bottom: dotMargins,
+      right: dotMargins
+    },
+    dotBottomLeft: {
+      position: 'absolute',
+      bottom: dotMargins,
+      left: dotMargins
+    },
+    dotTopRight: {
+      position: 'absolute',
+      top: dotMargins,
+      right: dotMargins
+    },
+    dotCenterMiddleLeft: {
+      position: 'absolute',
+      top: ((diceHeight / 2) - (dotSize / 2)),
+      left: dotMargins
+    },
+    dotCenterMiddleRight: {
+      position: 'absolute',
+      top: ((diceHeight / 2) - (dotSize / 2)),
+      right: dotMargins
+    }
+
+  });
+}

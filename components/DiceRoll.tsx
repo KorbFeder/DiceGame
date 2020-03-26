@@ -30,7 +30,7 @@ export default function DiceRoll({onRollFinished}) {
 
     return (
         <TouchableOpacity onPress={onDiceTouched}>
-            <Dice currentNumber={currentNumber}></Dice>
+            <Dice currentNumber={currentNumber} diceSize={200}></Dice>
         </TouchableOpacity>
     );
 }

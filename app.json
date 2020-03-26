@@ -23,8 +23,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "com.justarandom.korbi",
+      "versionCode": 1
     }
   }
 }

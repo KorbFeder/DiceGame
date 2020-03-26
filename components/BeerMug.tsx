@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity } from 'react-native';
 
 
-const cupHeight: number = 100;
+const cupHeight: number = 28;
 const cupWidth: number = cupHeight * 0.735;
 
 export default function BeerMug({percentageFilled}) {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'rgba(230, 230, 230, 1.0)',
         marginRight: 0.3 * cupWidth,
-        marginLeft: 0.03 * cupWidth,
+        marginLeft: 0.23 * cupWidth,
         marginBottom: 0.05 * cupHeight,
         marginTop: 0.05 * cupHeight,
         width: cupWidth,
