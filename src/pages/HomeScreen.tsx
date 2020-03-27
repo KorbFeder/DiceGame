@@ -7,7 +7,7 @@ const iconSize = 70;
 
 export default function HomeScreen({navigation}) {
     return (
-        <ImageBackground style={styles.backgroundImage} source={require('../assets/beerAndDice.jpg')}>
+        <ImageBackground style={styles.backgroundImage} source={require('../../assets/beerAndDice.jpg')}>
             <Text style={styles.headline}>
                 SCHWALLWÜRFELN
             </Text>
