@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import BeerMug from '../components/BeerMug';
+import BeerMug from './BeerMug';
 import Dice from './Dice';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Player } from '../models/Player-interface';
 
-const iconSize = 28;
+const iconSize: number = 28;
 
-export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumber, isActive, hisTurn}) {
+export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, isActive, hisTurn, isWinner}: Player) {
   let boxColor = 'rgb(240, 240, 245)';
   if(isActive === true) {
     boxColor = 'white';
@@ -14,6 +15,15 @@ export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumb
   if(hisTurn === true) {
     boxColor = 'rgb(255, 230, 230)';
   }
+
+  let trophycolor = 'grey';
+  let trophyText = 'kein Sieger';
+  if(isWinner === true) {
+    trophycolor = 'rgb(162, 121, 239)';
+    trophyText = 'Sieger';
+    boxColor = 'rgb(255, 255, 230)'
+  }   
+
   return (
     <View>
         <View style={[styles.container, {backgroundColor: boxColor}]}>
@@ -24,7 +34,7 @@ export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumb
               </View>
             </View>
             <Text style={styles.descriptionText}>Spieler:</Text>
-            <Text style={styles.descriptionText}>{playerName}</Text>
+            <Text style={styles.descriptionText}>{name}</Text>
           </View>
           
           <View style={styles.descriptionContainer}>
@@ -57,15 +67,14 @@ export default function PlayerStatus({playerName, cupFilled, beerNr, currentNumb
             <Text style={styles.descriptionText}>Getrunken:</Text>
             <Text style={styles.descriptionText}>{beerNr}tes Getränk</Text>
           </View>
-
+             
           <View style={styles.descriptionContainer}>
             <View style={[styles.outerIconCircle, {backgroundColor: 'rgb(250, 249, 254)'}]}>
               <View style={[styles.iconCircle, {backgroundColor: 'rgb(241, 236, 253)'}]}>
-                <Icon name="refresh" size={iconSize} color='rgb(162, 121, 239)'></Icon>
+                <Icon name="trophy" size={iconSize} color={trophycolor}></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>todo</Text>
-            <Text style={styles.descriptionText}>todo</Text>
+            <Text style={styles.descriptionText}>{trophyText}</Text>
           </View>
 
           <View style={styles.descriptionContainer}>

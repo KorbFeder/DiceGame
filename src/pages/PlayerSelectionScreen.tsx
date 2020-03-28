@@ -40,7 +40,17 @@ export default function PlayerSelectionScreen({navigation}) {
                 }/>
                 <Button type="clear" title="Bestätigen" onPress={() => {
                     if(textValue !== '') {
-                        onPlayerChanged([...players, {name: textValue, pkey: playerKey}]);
+                        const player: Player = {
+                            name: textValue, 
+                            pkey: playerKey, 
+                            isActive: true, 
+                            hisTurn: false,
+                            beerNr: 1,
+                            cupFilled: 100,
+                            currentNumber: 1,
+                            isWinner: false
+                        }
+                        onPlayerChanged([...players, player]);
                         onPlayerKeyChanged(playerKey + 1);
                     }
                 }}/>

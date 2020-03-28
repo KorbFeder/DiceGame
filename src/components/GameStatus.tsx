@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { GameInfo } from '../models/GameInfo-interface';
 
-export default function GameStatus() {
+export default function GameStatus({playersInvolved, currGameState}: GameInfo) {
   return (
       <View style={styles.container}>
         <Text style={styles.statusText}>Game Status</Text>
