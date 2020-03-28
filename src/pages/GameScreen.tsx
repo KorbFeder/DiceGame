@@ -16,7 +16,7 @@ export default function GameScreen({route, navigation}) {
   const [currentPlayer, setCurrentPlayer] = useState<number | undefined>(0);
   const [players, setPlayers] = useState<Player[] | undefined>(route.params.allPlayers);
   const [currGameState, setGameState] = useState(gameState.firstWinner);
-  const [gameInfo, setGameInfo] = useState<GameInfo | undefined>(null);
+  const [gameInfo, setGameInfo] = useState<GameInfo | undefined>({currGameState: gameState.firstWinner, playersInvolved: players});
 
   const gameService: GameService = new GameService(currentPlayer, setCurrentPlayer, players, setPlayers, currGameState, setGameState);
 
