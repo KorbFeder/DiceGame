@@ -10,7 +10,7 @@ import { gameState } from '../models/gameState';
 import { GameInfo } from '../models/GameInfo-interface';
 
 export default function GameScreen({route, navigation}) {
-  const sips: number = route.params.sips;
+  const sipPercentage: number = 100 / route.params.sips;
   const gameMode: string = route.params.gameMode;
   
   const [currentPlayer, setCurrentPlayer] = useState<number | undefined>(0);
@@ -18,7 +18,8 @@ export default function GameScreen({route, navigation}) {
   const [currGameState, setGameState] = useState(gameState.firstWinner);
   const [gameInfo, setGameInfo] = useState<GameInfo | undefined>({currGameState: gameState.firstWinner, playersInvolved: players});
 
-  const gameService: GameService = new GameService(currentPlayer, setCurrentPlayer, players, setPlayers, currGameState, setGameState);
+  const gameService: GameService = new GameService(currentPlayer, setCurrentPlayer, players, 
+    setPlayers, currGameState, setGameState, sipPercentage, gameMode);
 
   useEffect(() => {
     players[0].hisTurn = true;
@@ -26,12 +27,13 @@ export default function GameScreen({route, navigation}) {
   }, []);
 
   const onRollFinished = (result: number) => {
-    setGameInfo(gameService.executeGame(result));
+    const info = gameService.executeGame(result);
+    setGameInfo(info);
   }
 
   return (
       <View style={styles.container}>
-        <GameStatus playersInvolved={gameInfo.playersInvolved} currGameState={gameInfo.currGameState}></GameStatus>
+        <GameStatus playersInvolved={gameInfo.playersInvolved} currGameState={gameInfo.currGameState} gameMode={gameMode}></GameStatus>
         <ScrollView>
           {
             players.map((player: Player) => {

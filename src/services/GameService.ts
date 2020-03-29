@@ -11,10 +11,17 @@ export default class GameService {
         private players: Player[], 
         private setPlayers, 
         private currGameState: gameState,
-        private setGameState
+        private setGameState,
+        private sipPercentage: number,
+        private gameMode: string
     ) {}
 
     public executeGame(result: number): GameInfo {
+        if(this.gameMode === 'hard') {
+            this.players[currPlayer].cupFilled -= this.sipPercentage * this.players[currPlayer].currentNumber;
+            this.setPlayers([...this.players]);
+        }
+
         switch(this.currGameState) {
             case gameState.firstWinner: 
                 if(this.nextPlayerAnimation(result)) {
@@ -43,6 +50,22 @@ export default class GameService {
             case gameState.tryHitWinner:
                 if(this.nextPlayerAnimation(result)) {
                     if(this.tryToHitWinnerNumber()) {
+                        if(this.gameMode === 'easy') {
+                            this.players.forEach((player) => {
+                                if(!player.isWinner) {
+                                    player.cupFilled -= this.sipPercentage;
+                                }
+                            });
+                        }
+
+                        if(this.gameMode === 'medium') {
+                            this.players.forEach((player) => {
+                                if(!player.isWinner) {
+                                    player.cupFilled -= this.sipPercentage * player.currentNumber;
+                                }
+                            });
+                        }
+
                         this.setGameState(gameState.restart);
                     
                         return {playersInvolved: this.players.filter((player) => {
@@ -185,5 +208,4 @@ export default class GameService {
             return false;
         }
     }
-
 }

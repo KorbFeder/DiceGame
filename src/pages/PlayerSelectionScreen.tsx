@@ -35,7 +35,7 @@ export default function PlayerSelectionScreen({navigation}) {
 
             <View style={styles.card}>
                 <Text style={[styles.cardText, styles.cardTextHeadline]}>Spieler Hinzufügen</Text>
-                <Input onChangeText={text => onValueChanged(text)} placeholder='Spieler Name' leftIcon={
+                <Input value={textValue} onChangeText={text => onValueChanged(text)} placeholder='Spieler Name' leftIcon={
                     <Icon style={{paddingRight: 15}} name="user" size={24} color='grey'></Icon>
                 }/>
                 <Button type="clear" title="Bestätigen" onPress={() => {
@@ -52,6 +52,7 @@ export default function PlayerSelectionScreen({navigation}) {
                         }
                         onPlayerChanged([...players, player]);
                         onPlayerKeyChanged(playerKey + 1);
+                        onValueChanged('');
                     }
                 }}/>
            </View>
@@ -76,10 +77,10 @@ export default function PlayerSelectionScreen({navigation}) {
                     type="clear" 
                     title="Fertig" 
                     onPress={() => {
-                        if(players.length >= 2) {
+                        if(players.length >= 3) {
                             navigation.navigate('Game', { allPlayers: players, sips: Math.round(sliderVal * 100), gameMode: gameMode });
                         } else {
-                            Alert.alert('Spieleranzahl', 'Bitte mindestens 2 Spieler hinzufügen');
+                            Alert.alert('Spieleranzahl', 'Bitte mindestens 3 Spieler hinzufügen');
                         }
                     }}
                 ></Button>

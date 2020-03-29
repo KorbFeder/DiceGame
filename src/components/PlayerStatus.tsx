@@ -8,6 +8,7 @@ import { Player } from '../models/Player-interface';
 const iconSize: number = 28;
 
 export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, isActive, hisTurn, isWinner}: Player) {
+  cupFilled = Math.round(cupFilled);
   let boxColor = 'rgb(240, 240, 245)';
   if(isActive === true) {
     boxColor = 'white';
