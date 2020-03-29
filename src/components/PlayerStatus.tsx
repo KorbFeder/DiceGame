@@ -9,7 +9,9 @@ const iconSize: number = 28;
 
 export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, isActive, hisTurn, isWinner}: Player) {
   cupFilled = Math.round(cupFilled);
+  let emptyCup = 'Getränk noch voll'
   let boxColor = 'rgb(240, 240, 245)';
+  let warningColor = 'grey';
   if(isActive === true) {
     boxColor = 'white';
   }
@@ -24,6 +26,12 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
     trophyText = 'Sieger';
     boxColor = 'rgb(255, 255, 230)'
   }   
+
+  if(cupFilled <= 0) {
+    cupFilled = 0;
+    emptyCup = 'muss leer sein!';
+    warningColor = 'rgb(121, 145, 239)';
+  }
 
   return (
     <View>
@@ -81,11 +89,11 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
           <View style={styles.descriptionContainer}>
             <View style={[styles.outerIconCircle, {backgroundColor: 'rgb(247, 248, 253)'}]}>
               <View style={[styles.iconCircle, {backgroundColor: 'rgb(231, 235, 251)'}]}>
-                <Icon name="warning" size={iconSize} color='rgb(121, 145, 239)'></Icon>
+                <Icon name="warning" size={iconSize} color={warningColor}></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Austrinken</Text>
-            <Text style={styles.descriptionText}>muss leer sein</Text>
+            <Text style={styles.descriptionText}>Austrinken:</Text>
+            <Text style={styles.descriptionText}>{emptyCup}</Text>
           </View>
         </View>
     </View>

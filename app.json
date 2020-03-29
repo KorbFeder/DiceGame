@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template (TypeScript)",
+    "name": "Schwallwürfeln",
     "slug": "SchwallWuerfeln",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -25,6 +25,7 @@
     ],
     "android": {
       "package": "com.justarandom.korbi",
+      "permissions": [],
       "versionCode": 1
     }
   }

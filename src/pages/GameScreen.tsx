@@ -33,7 +33,7 @@ export default function GameScreen({route, navigation}) {
 
   return (
       <View style={styles.container}>
-        <GameStatus playersInvolved={gameInfo.playersInvolved} currGameState={gameInfo.currGameState} gameMode={gameMode}></GameStatus>
+        <GameStatus players={players} setPlayers={setPlayers} setGameStat={setGameState} playersInvolved={gameInfo.playersInvolved} currGameState={gameInfo.currGameState} gameMode={gameMode}></GameStatus>
         <ScrollView>
           {
             players.map((player: Player) => {

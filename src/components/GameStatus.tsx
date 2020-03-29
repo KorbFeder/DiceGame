@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { GameInfo } from '../models/GameInfo-interface';
 import { gameState } from '../models/gameState';
+import { Button } from 'react-native-elements';
+import { Player } from '../models/Player-interface';
 
-export default function GameStatus({playersInvolved, currGameState, gameMode}) {
+export default function GameStatus({playersInvolved, setPlayers, currGameState, gameMode, setGameStat, players}) {
   let drinkMessage = '';
   if(gameMode === 'hard') {
     drinkMessage = 'und muss/müssen die Augenzahl trinken';
@@ -33,12 +35,39 @@ export default function GameStatus({playersInvolved, currGameState, gameMode}) {
       textStatus = playersInvolved[0].name + ' und ' + playersInvolved[1].name + ' haben gewonnen';
       break;
 
+    case gameState.restart: 
+      if(gameMode === 'easy') {
+        console.log('test');
+        drinkMessage = 'und alle anderen müssen 1 Schluck trinken';
+      }
+      if(gameMode === 'medium') {
+        drinkMessage = 'und alle anderen müssen ihre Augenzahlen trinken';
+      }
+      textStatus = playersInvolved[0].name + ' und ' + playersInvolved[1].name + ' haben gewonnen';
+      break;
+    
+
+
   } 
   return (
        <View style={styles.container}>
         <Text style={styles.statusText}>Game Status</Text>
         <Text style={styles.statusText}>{textStatus}</Text>
         <Text style={styles.statusText}>{drinkMessage}</Text>
+        {
+          (currGameState === gameState.tryHitWinner || currGameState === gameState.restart) &&
+            <Button type="clear" title='nächste Runde' onPress={() => {
+              setGameStat(gameState.firstWinner);
+              players.forEach((player: Player) => {
+                 player.hisTurn = false;
+                 player.isActive = true;
+                 player.isWinner = false;
+              });
+              players[0].hisTurn = true;
+              setPlayers(players);
+            }
+            }/>
+        }
       </View>
   );
 }

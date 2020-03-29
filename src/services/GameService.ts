@@ -2,7 +2,7 @@ import { Player } from "../models/Player-interface";
 import { gameState } from '../models/gameState';
 import { GameInfo } from "../models/GameInfo-interface";
 
-let currPlayer;
+let currPlayer = 0;
 
 export default class GameService {
     constructor(
@@ -17,8 +17,14 @@ export default class GameService {
     ) {}
 
     public executeGame(result: number): GameInfo {
-        if(this.gameMode === 'hard') {
-            this.players[currPlayer].cupFilled -= this.sipPercentage * this.players[currPlayer].currentNumber;
+        if(this.players[this.currentPlayer] && this.gameMode === 'hard') {
+            this.players[this.currentPlayer].cupFilled -= this.sipPercentage * result;
+            this.setPlayers([...this.players]);
+        }
+
+        if(this.players[this.currentPlayer] && this.players[this.currentPlayer].cupFilled <= 0) {
+            this.players[this.currentPlayer].cupFilled = 100;
+            this.players[this.currentPlayer].beerNr++;
             this.setPlayers([...this.players]);
         }
 
@@ -84,9 +90,14 @@ export default class GameService {
                 })], currGameState: gameState.winnersNumber};
 
             case gameState.restart:
-                break;
+                return {playersInvolved: this.players.filter((player) => {
+                    if(player.isWinner) {
+                        return player;
+                    }
+                }), currGameState: gameState.restart}
 
         }
+        
    }
 
     private nextPlayerAnimation(result: number): boolean {
