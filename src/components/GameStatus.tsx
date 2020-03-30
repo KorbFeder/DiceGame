@@ -5,7 +5,7 @@ import { gameState } from '../models/gameState';
 import { Button } from 'react-native-elements';
 import { Player } from '../models/Player-interface';
 
-export default function GameStatus({playersInvolved, setPlayers, currGameState, gameMode, setGameStat, players}) {
+export default function GameStatus({playersInvolved, setPlayers, currGameState, gameMode, setGameStat, players, setGameInfo, setCurrentPlayer}) {
   let drinkMessage = '';
   if(gameMode === 'hard') {
     drinkMessage = 'und muss/müssen die Augenzahl trinken';
@@ -26,7 +26,6 @@ export default function GameStatus({playersInvolved, setPlayers, currGameState, 
 
     case gameState.tryHitWinner: 
       if(gameMode === 'easy') {
-        console.log('test');
         drinkMessage = 'und alle anderen müssen 1 Schluck trinken';
       }
       if(gameMode === 'medium') {
@@ -37,7 +36,6 @@ export default function GameStatus({playersInvolved, setPlayers, currGameState, 
 
     case gameState.restart: 
       if(gameMode === 'easy') {
-        console.log('test');
         drinkMessage = 'und alle anderen müssen 1 Schluck trinken';
       }
       if(gameMode === 'medium') {
@@ -57,14 +55,16 @@ export default function GameStatus({playersInvolved, setPlayers, currGameState, 
         {
           (currGameState === gameState.tryHitWinner || currGameState === gameState.restart) &&
             <Button type="clear" title='nächste Runde' onPress={() => {
+              setCurrentPlayer(0);
               setGameStat(gameState.firstWinner);
+              setGameInfo(gameState.firstWinner);
               players.forEach((player: Player) => {
                  player.hisTurn = false;
                  player.isActive = true;
                  player.isWinner = false;
               });
               players[0].hisTurn = true;
-              setPlayers(players);
+              setPlayers([...players]);
             }
             }/>
         }

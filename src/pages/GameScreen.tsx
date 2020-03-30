@@ -33,7 +33,16 @@ export default function GameScreen({route, navigation}) {
 
   return (
       <View style={styles.container}>
-        <GameStatus players={players} setPlayers={setPlayers} setGameStat={setGameState} playersInvolved={gameInfo.playersInvolved} currGameState={gameInfo.currGameState} gameMode={gameMode}></GameStatus>
+        <GameStatus 
+          players={players} 
+          setPlayers={setPlayers} 
+          setGameStat={setGameState} 
+          playersInvolved={gameInfo.playersInvolved} 
+          currGameState={gameInfo.currGameState} 
+          gameMode={gameMode} 
+          setGameInfo={setGameInfo} 
+          setCurrentPlayer={setCurrentPlayer}
+        ></GameStatus>
         <ScrollView>
           {
             players.map((player: Player) => {
@@ -53,12 +62,16 @@ export default function GameScreen({route, navigation}) {
             })
           }
         </ScrollView>
-        <View style={styles.diceContainer}>
-          <View style={styles.dice}>
-            <DiceRoll onRollFinished={onRollFinished}></DiceRoll>
+        {
+          !(gameInfo.currGameState === gameState.tryHitWinner || gameInfo.currGameState === gameState.restart) &&
+          <View style={styles.diceContainer}>
+            <View style={styles.dice}>
+              <DiceRoll onRollFinished={onRollFinished}></DiceRoll>
+            </View>
           </View>
-        </View>
+        }
       </View>
+        
   );
 }
 

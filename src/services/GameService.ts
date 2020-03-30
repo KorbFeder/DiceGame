@@ -17,14 +17,21 @@ export default class GameService {
     ) {}
 
     public executeGame(result: number): GameInfo {
-        if(this.players[this.currentPlayer] && this.gameMode === 'hard') {
+        if(this.players[this.currentPlayer] && this.gameMode === 'hard' && this.currGameState != gameState.restart && 
+        this.currGameState != gameState.winnersNumber) {
             this.players[this.currentPlayer].cupFilled -= this.sipPercentage * result;
             this.setPlayers([...this.players]);
         }
 
-        if(this.players[this.currentPlayer] && this.players[this.currentPlayer].cupFilled <= 0) {
+        
+        if(this.players[this.currentPlayer] && this.players[this.currentPlayer].cupFilled <= -1000000) {
             this.players[this.currentPlayer].cupFilled = 100;
             this.players[this.currentPlayer].beerNr++;
+            this.setPlayers([...this.players]);
+        }
+
+        if(this.players[this.currentPlayer] && this.players[this.currentPlayer].cupFilled <= 0) {
+            this.players[this.currentPlayer].cupFilled = -1000000;
             this.setPlayers([...this.players]);
         }
 
@@ -178,6 +185,7 @@ export default class GameService {
         this.players.forEach((player) => {
             if(player.isWinner === true) {
                 player.currentNumber = result;
+                player.cupFilled -= this.sipPercentage * result;
             }
         });
         let lowest: number = 0;
