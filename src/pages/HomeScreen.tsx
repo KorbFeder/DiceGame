@@ -24,12 +24,13 @@ export default function HomeScreen({navigation}) {
                         <Icon name="cog" size={iconSize} color='white'></Icon>
                     </View>
                     <Text style={styles.menuText}>EINSTELLUNGEN</Text>
+                    <Text style={styles.menuText}>(kommt demnächst)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuButton} onPress={() => console.log('multi')}>
                     <View style={styles.menuCycle}>
                         <Icon name="users" size={iconSize} color='white'></Icon>
                     </View>
-                    <Text style={styles.menuText}>MULTI (nicht verfügbar)</Text>
+                    <Text style={styles.menuText}>MULTI (kommt demnächst)</Text>
                     <Text style={styles.menuText}>(mehrere Smartphone)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuButton} onPress={() => console.log('info')}>
@@ -37,6 +38,7 @@ export default function HomeScreen({navigation}) {
                         <Icon name="info" size={iconSize} color='white'></Icon>
                     </View>
                     <Text style={styles.menuText}>INFORMATIONEN</Text>
+                    <Text style={styles.menuText}>(kommt demnächst)</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
