@@ -15,7 +15,7 @@ export default function PlayerSelectionScreen({navigation}) {
     return (
         <View style={styles.container}>
             <View style={[styles.card, {marginTop: 30}]}>
-                <Text style={[styles.cardText, styles.cardTextHeadline]}>Spiel Modus</Text>
+                <Text allowFontScaling={false} style={[styles.cardText, styles.cardTextHeadline]}>Spiel Modus</Text>
                 <Picker 
                     selectedValue={gameMode}
                     style={[styles.picker, styles.cardText]}
@@ -28,13 +28,13 @@ export default function PlayerSelectionScreen({navigation}) {
             </View>
 
             <View style={styles.card}>
-                <Text style={[styles.cardText, styles.cardTextHeadline]}>Schlücke pro Getränk</Text>
+                <Text allowFontScaling={false} style={[styles.cardText, styles.cardTextHeadline]}>Schlücke pro Getränk</Text>
                 <Slider minimumTrackTintColor={'blue'} thumbTintColor={'teal'} value={sliderVal} onValueChange={(value) => onSilderChanged(value)}></Slider>
-                <Text style={styles.cardText}>{Math.round(sliderVal * 100)}</Text>
+                <Text allowFontScaling={false} style={styles.cardText}>{Math.round(sliderVal * 100)}</Text>
             </View>
 
             <View style={styles.card}>
-                <Text style={[styles.cardText, styles.cardTextHeadline]}>Spieler Hinzufügen</Text>
+                <Text allowFontScaling={false} style={[styles.cardText, styles.cardTextHeadline]}>Spieler Hinzufügen</Text>
                 <Input value={textValue} onChangeText={text => onValueChanged(text)} placeholder='Spieler Name' leftIcon={
                     <Icon style={{paddingRight: 15}} name="user" size={24} color='grey'></Icon>
                 }/>
@@ -62,7 +62,7 @@ export default function PlayerSelectionScreen({navigation}) {
                 players.map((player: Player) => {
                     return (
                         <View key={player.pkey} style={[styles.card, styles.player]}>
-                            <Text style={styles.cardText}>{player.name}</Text>
+                            <Text allowFontScaling={false} style={styles.cardText}>{player.name}</Text>
                             <TouchableOpacity onPress={() => onPlayerChanged(players.filter(nplayer => nplayer.pkey !== player.pkey))}>
                                 <Icon name="trash" color='rgb(152, 153, 161)' size={25}></Icon>
                             </TouchableOpacity>

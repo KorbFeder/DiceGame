@@ -42,8 +42,8 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <Icon name="user" size={iconSize} color='rgb(77, 217, 211)'></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Spieler:</Text>
-            <Text style={styles.descriptionText}>{name}</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>Spieler:</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{name}</Text>
           </View>
           
           <View style={styles.descriptionContainer}>
@@ -52,8 +52,8 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <Dice currentNumber={currentNumber} diceSize={iconSize}></Dice>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Augenzahl:</Text>
-            <Text style={styles.descriptionText}>{currentNumber}</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>Augenzahl:</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{currentNumber}</Text>
 
           </View>
 
@@ -63,8 +63,8 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <BeerMug percentageFilled={cupFilled}></BeerMug>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Füllstand:</Text>
-            <Text style={styles.descriptionText}>{cupFilled}%</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>Füllstand:</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{cupFilled}%</Text>
           </View>
 
           <View style={styles.descriptionContainer}>
@@ -73,8 +73,8 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <Icon name="bar-chart" size={iconSize} color='rgb(121, 193, 239)'></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Getrunken:</Text>
-            <Text style={styles.descriptionText}>{beerNr}tes Getränk</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>Getrunken:</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{beerNr}tes Getränk</Text>
           </View>
              
           <View style={styles.descriptionContainer}>
@@ -83,7 +83,7 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <Icon name="trophy" size={iconSize} color={trophycolor}></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>{trophyText}</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{trophyText}</Text>
           </View>
 
           <View style={styles.descriptionContainer}>
@@ -92,8 +92,8 @@ export default function PlayerStatus({name, cupFilled, beerNr, currentNumber, is
                 <Icon name="warning" size={iconSize} color={warningColor}></Icon>
               </View>
             </View>
-            <Text style={styles.descriptionText}>Austrinken:</Text>
-            <Text style={styles.descriptionText}>{emptyCup}</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>Austrinken:</Text>
+            <Text allowFontScaling={false} style={styles.descriptionText}>{emptyCup}</Text>
           </View>
         </View>
     </View>

@@ -49,9 +49,9 @@ export default function GameStatus({playersInvolved, setPlayers, currGameState, 
   } 
   return (
        <View style={styles.container}>
-        <Text style={styles.statusText}>Game Status</Text>
-        <Text style={styles.statusText}>{textStatus}</Text>
-        <Text style={styles.statusText}>{drinkMessage}</Text>
+        <Text allowFontScaling={false} style={styles.statusText}>Game Status</Text>
+        <Text allowFontScaling={false} style={styles.statusText}>{textStatus}</Text>
+        <Text allowFontScaling={false} style={styles.statusText}>{drinkMessage}</Text>
         {
           (currGameState === gameState.tryHitWinner || currGameState === gameState.restart) &&
             <Button type="clear" title='nächste Runde' onPress={() => {

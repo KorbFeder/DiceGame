@@ -8,7 +8,7 @@ const iconSize = 70;
 export default function HomeScreen({navigation}) {
     return (
         <ImageBackground style={styles.backgroundImage} source={require('../../assets/beerAndDice.jpg')}>
-            <Text style={styles.headline}>
+            <Text allowFontScaling={false} style={styles.headline}>
                 SCHWALLWÜRFELN
             </Text>
             <View style={styles.buttonGroup}>
@@ -16,29 +16,29 @@ export default function HomeScreen({navigation}) {
                     <View style={styles.menuCycle}>
                         <Icon name="user" size={iconSize} color='white'></Icon>
                     </View>
-                    <Text style={styles.menuText}>NORMALES SPIEL</Text>
-                    <Text style={styles.menuText}>(nur 1 Smartphone)</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>NORMALES SPIEL</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>(nur 1 Smartphone)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuButton} onPress={() => console.log('settings')}>
                     <View style={styles.menuCycle}>
                         <Icon name="cog" size={iconSize} color='white'></Icon>
                     </View>
-                    <Text style={styles.menuText}>EINSTELLUNGEN</Text>
-                    <Text style={styles.menuText}>(kommt demnächst)</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>EINSTELLUNGEN</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>(kommt demnächst)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuButton} onPress={() => console.log('multi')}>
                     <View style={styles.menuCycle}>
                         <Icon name="users" size={iconSize} color='white'></Icon>
                     </View>
-                    <Text style={styles.menuText}>MULTI (kommt demnächst)</Text>
-                    <Text style={styles.menuText}>(mehrere Smartphone)</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>MULTI (kommt demnächst)</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>(mehrere Smartphone)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menuButton} onPress={() => console.log('info')}>
                     <View style={styles.menuCycle}>
                         <Icon name="info" size={iconSize} color='white'></Icon>
                     </View>
-                    <Text style={styles.menuText}>INFORMATIONEN</Text>
-                    <Text style={styles.menuText}>(kommt demnächst)</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>INFORMATIONEN</Text>
+                    <Text allowFontScaling={false} style={styles.menuText}>(kommt demnächst)</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
