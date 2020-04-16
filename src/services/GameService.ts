@@ -185,7 +185,6 @@ export default class GameService {
         this.players.forEach((player) => {
             if(player.isWinner === true) {
                 player.currentNumber = result;
-                player.cupFilled -= this.sipPercentage * result;
             }
         });
         let lowest: number = 0;
